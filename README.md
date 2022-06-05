@@ -1,2 +1,2 @@
 # NoSQL-Backend
-Social Media Backend
+Social Networks Backend
