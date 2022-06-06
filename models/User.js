@@ -12,9 +12,6 @@ const UserSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      validate: {
-
-      }
     },
     thoughts: [],
     friends: []
