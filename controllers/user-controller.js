@@ -1,13 +1,20 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 const userController = {
   // get all users
   getAllUsers(req, res) {
     User.find({})
+
+      .populate({
+        path: "thoughts",
+        select: "-__v",
+      })
+      .select("-__v")
+      .sort({ _id: -1 })
+
       .then((dbUserData) => {
         res.json(dbUserData);
       })
-
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
@@ -17,6 +24,13 @@ const userController = {
   // get one user
   getUserById({ params }, res) {
     User.findById({ _id: params.id })
+      .populate({
+        path: "thoughts",
+        select: "-__v",
+      })
+      .select("-__v")
+      .sort({ _id: -1 })
+
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({
@@ -26,7 +40,6 @@ const userController = {
         }
         res.json(dbUserData);
       })
-
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
@@ -47,7 +60,7 @@ const userController = {
 
   // update user
   updateUser({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+    User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidatores: true })
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({
@@ -57,7 +70,6 @@ const userController = {
         }
         res.json(dbUserData);
       })
-
       .catch((err) => {
         res.status(400).json(err);
       });
@@ -75,10 +87,17 @@ const userController = {
         }
         res.json(dbUserData);
       })
-
       .catch((err) => {
         res.status(400).json(err);
       });
+  },
+
+  addFriend() {
+
+  },
+
+  removeFriend() {
+
   }
 };
 
