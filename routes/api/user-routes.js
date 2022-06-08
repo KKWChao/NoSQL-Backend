@@ -18,14 +18,14 @@ router.route('/')
 
 // single routes
 // /api/users/<userId>
-router.route('/:userId')
+router.route('/:id')
   .get(getUserById)
   .put(updateUser)
   .delete(deleteUser)
 
 // /api/users/<userId>/friends/<friendId>
-router.route('/:userId/friends/:friendId')
-  .put(addFriend)
+router.route('/:id/friends/:friendId')
+  .post(addFriend)
   .delete(removeFriend)
 
 module.exports = router;

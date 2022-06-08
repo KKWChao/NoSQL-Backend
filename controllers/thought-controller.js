@@ -4,6 +4,10 @@ const thoughtController = {
   // get all thoughts
   getThought(req, res) {
     Thought.find({})
+      .populate({
+        path: "reactions",
+        select: "-__v",
+      })
       .select("-__v")
       .sort({ _id: -1 })
       .then((dbThoughtData) => {
@@ -18,6 +22,10 @@ const thoughtController = {
   // get one thought
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.thoughtId })
+      .populate({
+        path: "reactions",
+        select: "-__v",
+      })
       .select("-__v")
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
