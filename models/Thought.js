@@ -8,7 +8,7 @@ const ReactionSchema = new Schema(
       default: () => new Types.ObjectId()
     },
     reactionBody: {
-      type: Text,
+      type: String,
       required: true,
       minlength: 1,
       maxlength: 280
@@ -60,7 +60,7 @@ const ThoughtSchema = new Schema(
 )
 
 ThoughtSchema.virtual("reactionCoount").get(function () {
-  return this.reactions.length;
+  return this.reactions.length
 });
 
 const Thought = model('Thought', ThoughtSchema)
