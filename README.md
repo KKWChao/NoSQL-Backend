@@ -44,32 +44,6 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 
-<h3>Models</h3>
-
-<strong>User</strong>
-
-username
-- String
-- Unique
-- Required
-- Trimmed
-
-email
-- String
-- Unique
-- Required
-- Trimmed
-
-thoughts
-- array referencing Thought model
-
-friends
-- array referencing User model
-
-Schema Settings
-- Virtual: friendCount
-  - gets length of user's friends array
-
 
 
 ## Installation

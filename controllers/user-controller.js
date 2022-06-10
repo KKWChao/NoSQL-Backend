@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 const userController = {
   // get all users
@@ -92,7 +92,8 @@ const userController = {
           });
           return;
         }
-        res.json(dbUserData);
+
+        res.json('User Removed');
       })
       .catch((err) => {
         res.status(400).json(err);
@@ -132,7 +133,7 @@ const userController = {
           });
           return;
         }
-        res.json(dbUserData);
+        res.json('Friend Removed');
       })
       .catch((err) => {
         res.status(400).json(err);

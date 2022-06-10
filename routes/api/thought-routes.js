@@ -29,7 +29,7 @@ router.route('/:thoughtId/reactions')
   .post(addReaction)
 
 // /api/thoughts/<thoughtId>/reactions/<reactionId>
-router.route('/thoughtId/reaction/:reactionId')
+router.route('/:thoughtId/reaction/:reactionId')
   .delete(removeReaction)
 
 module.exports = router
